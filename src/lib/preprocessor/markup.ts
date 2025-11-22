@@ -129,7 +129,14 @@ function buildQueryString(node: any, options: ImagePluginOptions): string {
   };
 
   params.set('formats', getAttrValue('formats') || options.formats?.join(','));
-  params.set('placeholder', getAttrValue('placeholder') || options.placeholder);
+  const placeholder = getAttrValue('placeholder');
+  if (placeholder) {
+    // console.log('[Preprocessor] Found placeholder:', placeholder);
+    params.set('placeholder', placeholder);
+  } else {
+    params.set('placeholder', options.placeholder);
+  }
+  
   params.set('sizes', getAttrValue('sizes'));
   
   // Extract specific dimensions if static

@@ -1,7 +1,5 @@
 <script>
   import { Picture, Image, BackgroundImage } from "$lib";
-  import mobileImage from "../assets/mobile.jpg?imagetools";
-  import testImage from "../assets/test.png?imagetools";
 </script>
 
 <div class="container">
@@ -11,14 +9,7 @@
     <h2>1. Basic Image Component</h2>
     <p>Standard responsive image (test.png)</p>
     <div style="width: 100%;" class="image-wrapper">
-      <Image
-        src={testImage}
-        alt="Test Image"
-        height={100}
-        width={100}
-        fit="fill"
-        style="width: 100%;"
-      />
+      <Image src="../assets/test.png" alt="Test Image" width={10} />
     </div>
   </section>
 
@@ -27,7 +18,7 @@
     <p>Multiple formats and sizes (mobile.jpg)</p>
     <div class="image-wrapper">
       <Picture
-        src={mobileImage}
+        src="../assets/mobile.jpg"
         alt="Mobile Image"
         formats={["avif", "webp", "jpeg"]}
         height={200}
@@ -45,7 +36,7 @@
     </p>
     <div class="image-wrapper">
       <Picture
-        src={testImage}
+        src="../assets/test.png"
         alt="Art Direction Example"
         style="width: 100%; "
         artDirectives={[
@@ -63,6 +54,18 @@
         <h3>Background Content</h3>
       </div>
     </BackgroundImage>
+  </section>
+  <section>
+    <h2>5. Pixelated Placeholder</h2>
+    <p>Low-res pixelated placeholder while loading.</p>
+    <div class="image-wrapper">
+      <Image
+        src="../assets/kk.jpg"
+        alt="Pixelated Placeholder Test"
+        width={400}
+        placeholder="pixelated"
+      />
+    </div>
   </section>
 </div>
 

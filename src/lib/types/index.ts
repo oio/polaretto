@@ -1,5 +1,5 @@
 export type ImageFormat = 'avif' | 'webp' | 'jpeg' | 'png' | 'original';
-export type PlaceholderType = 'blur' | 'dominant-color' | 'traced-svg' | 'none';
+export type PlaceholderType = 'blur' | 'dominant-color' | 'traced-svg' | 'pixelated' | 'none';
 export type LoadingType = 'lazy' | 'eager';
 
 export interface ImagePluginOptions {
@@ -23,7 +23,7 @@ export interface ImageData {
   width: number;
   height: number;
   aspectRatio: number;
-  placeholder?: string | null;
+  placeholder?: string | string[] | null;
   sources: ImageSource[];
 }
 

@@ -7,7 +7,8 @@
     sizes,
     width,
     height,
-    fit, // Add this
+    fit,
+    placeholder, // Add this
     loading = 'lazy',
     class: className = '',
     style = '',
@@ -19,6 +20,7 @@
     width?: number;
     height?: number;
     fit?: 'cover' | 'contain' | 'fill' | 'inside' | 'outside'; // Add type
+    placeholder?: 'blur' | 'dominant-color' | 'traced-svg' | 'pixelated' | 'none'; // Add type
     loading?: 'lazy' | 'eager';
     class?: string;
     style?: string;
@@ -32,12 +34,20 @@
   let placeholderStyle = $derived.by(() => {
     if (!src?.placeholder) return '';
 
-    if (src.placeholder.startsWith('data:image/')) {
-      return `background-image: url(${src.placeholder}); background-size: cover; background-position: center;`;
-    } else if (src.placeholder.startsWith('rgb(')) {
-      return `background-color: ${src.placeholder};`;
+    let bgImage = '';
+    if (Array.isArray(src.placeholder)) {
+        bgImage = src.placeholder.map(url => `url(${url})`).join(', ');
+    } else {
+        bgImage = `url(${src.placeholder})`;
     }
-    return '';
+
+    let style = `background-image: ${bgImage}; background-size: cover; background-position: center;`;
+
+    if (placeholder === 'pixelated') {
+      style += ' image-rendering: -moz-crisp-edges; image-rendering: pixelated;';
+    }
+
+    return style;
   });
 
   // Merge placeholder style with user style and explicit height

@@ -69,6 +69,20 @@ A powerful, zero-runtime image optimization library for Svelte and SvelteKit, in
 
 ## Usage
 
+**⚠️ Important**: For the automatic optimization features (like `width`/`height`/`fit` param injection) to work, you must provide the `src` attribute as a **string literal** directly on the component.
+
+```svelte
+<!-- ✅ Works: Preprocessor can optimize this -->
+<Image src="./assets/image.jpg" width={400} />
+
+<!-- ❌ Preprocessor cannot touch this (manual import required for params) -->
+<script>
+  import myImage from './assets/image.jpg';
+</script>
+<Image src={myImage} width={400} /> 
+<!-- Result: Full size image displayed at 400px width -->
+```
+
 ### 1. Basic Responsive Image
 
 Use the `<Image>` component for standard images. It automatically generates source sets for different device widths.
