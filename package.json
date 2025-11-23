@@ -1,6 +1,6 @@
 {
   "name": "polaretto",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "scripts": {
     "dev": "vite dev",
     "build": "vite build && npm run prepack",
@@ -43,7 +43,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/oio/polaretto.git"
+    "url": "git+https://github.com/mat-lo/polaretto.git"
   },
   "dependencies": {
     "estree-walker": "^3.0.3",
