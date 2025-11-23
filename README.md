@@ -1,6 +1,6 @@
-![polaretto.webp](polaretto.webp)
+![polaretto.webp](src/assets/polaretto.webp)
 
-![howitworks.webp](howitworks.webp)
+![howitworks.webp](src/assets/howitworks.webp)
 
 **polaretto** is a svelte library that optimizes your images during the website build process, not when users visit your site.
 

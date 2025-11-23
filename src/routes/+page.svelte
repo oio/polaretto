@@ -9,7 +9,11 @@
     <h2>1. Basic Image Component</h2>
     <p>Standard responsive image (test.png)</p>
     <div style="width: 100%;" class="image-wrapper">
-      <Image src="../assets/test.png" alt="Test Image" width={10} />
+      <Image
+        src="../assets/landscape.png"
+        alt="Test Image"
+        style="width: 100%;"
+      />
     </div>
   </section>
 
@@ -18,12 +22,12 @@
     <p>Multiple formats and sizes (mobile.jpg)</p>
     <div class="image-wrapper">
       <Picture
-        src="../assets/mobile.jpg"
+        src="../assets/portrait.png"
         alt="Mobile Image"
         formats={["avif", "webp", "jpeg"]}
-        height={200}
-        width={100}
+        width={500}
         fit="fill"
+        style="width: 100%;"
       />
     </div>
   </section>
@@ -36,12 +40,12 @@
     </p>
     <div class="image-wrapper">
       <Picture
-        src="../assets/test.png"
+        src="../assets/landscape.png"
         alt="Art Direction Example"
         style="width: 100%; "
         placeholder="pixelated"
         artDirectives={[
-          { media: "(max-width: 600px)", src: "../assets/mobile.jpg" },
+          { media: "(max-width: 600px)", src: "../assets/square.png" },
         ]}
       />
     </div>
@@ -50,7 +54,7 @@
   <section>
     <h2>4. Background Image</h2>
     <p>Image as background (mobile.jpg)</p>
-    <BackgroundImage src="../assets/mobile.jpg" class="hero-bg">
+    <BackgroundImage src="../assets/square.png" class="hero-bg">
       <div class="hero-content">
         <h3>Background Content</h3>
       </div>
@@ -61,10 +65,11 @@
     <p>Low-res pixelated placeholder while loading.</p>
     <div class="image-wrapper">
       <Image
-        src="../assets/kk.jpg"
+        src="../assets/square.png"
         alt="Pixelated Placeholder Test"
         width={400}
         placeholder="pixelated"
+        style="width: 100%;"
       />
     </div>
   </section>
@@ -72,7 +77,7 @@
 
 <style>
   .container {
-    max-width: 800px;
+    max-width: 700px;
     margin: 0 auto;
     padding: 2rem;
     font-family: system-ui, sans-serif;
@@ -85,10 +90,7 @@
   }
 
   .image-wrapper {
-    border: 1px solid #ddd;
-    padding: 1rem;
-    border-radius: 8px;
-    background: #f9f9f9;
+    width: 100%;
   }
 
   .hero-bg {
