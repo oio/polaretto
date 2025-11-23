@@ -1,8 +1,16 @@
-![cover.webp](cover.webp)
+![polaretto.webp](polaretto.webp)
 
-# polaretto
+![howitworks.webp](howitworks.webp)
 
-Zero-runtime image optimization library for Svelte and SvelteKit. Takes your images in weird formats and makes them work in the browser in super optimized formats and sizes across all devices.
+**polaretto** optimizes your images during the website build process, not when users visit your site.
+
+1.  **Image Detection (Preprocessor):** When you write code like `<Image src="./my-image.jpg" />`, `polaretto` identifies these image references in your Svelte files.
+2.  **Image Processing (Vite Plugin with Sharp):** During your project's build, the `polaretto` Vite plugin steps in. It takes your original, often large, image files and uses the `sharp` library to:
+    - Create multiple smaller versions of each image for different screen sizes.
+    - Convert images into modern, web-optimized formats (like WebP and AVIF).
+    - Generate low-quality placeholders (e.g., blurry versions) for smooth loading.
+      All these optimized image files are saved into your website's output folder.
+3.  **Dynamic Loading (Svelte Components):** Instead of using your original image, the `polaretto` Svelte components (`<Image>`, `<Picture>`, `<BackgroundImage>`) are automatically updated to point to the newly generated, optimized image files. They create the necessary HTML (`<img srcset>`, `<picture>`) or CSS to ensure the browser loads the smallest and most appropriate image for each user's device.
 
 ## Features
 
@@ -195,12 +203,6 @@ Both the Vite plugin and Preprocessor accept an options object:
 | `breakpoints` | `number[]`                             | `[640, 768, 1024, 1280, 1536]`  | Widths to resize images to.             |
 | `placeholder` | `'blur' \| 'dominant-color' \| 'none'` | `'blur'`                        | Type of placeholder to generate.        |
 | `cacheDir`    | `string`                               | `node_modules/.cache/polaretto` | Directory for caching generated images. |
-
-## How It Works
-
-1.  **Preprocessor**: Scans your Svelte files for `<Picture>`, `<Image>`, and `<BackgroundImage>` components. It converts `src` attributes with string literals into static imports (e.g., `import __img_0 from './image.jpg?responsive'`).
-2.  **Vite Plugin**: Intercepts these imports. It uses `sharp` to resize and convert the images into multiple formats and sizes based on your configuration. It returns a JavaScript object containing the URLs and metadata (width, height, placeholder).
-3.  **Components**: The Svelte components receive this data and render the appropriate HTML (`<img>`, `<picture>`, `<source>`, or CSS `image-set`).
 
 ## License
 
