@@ -2,7 +2,7 @@
 
 ![howitworks.webp](howitworks.webp)
 
-**polaretto** optimizes your images during the website build process, not when users visit your site.
+**polaretto** is a svelte library that optimizes your images during the website build process, not when users visit your site.
 
 1.  **Image Detection (Preprocessor):** When you write code like `<Image src="./my-image.jpg" />`, `polaretto` identifies these image references in your Svelte files.
 2.  **Image Processing (Vite Plugin with Sharp):** During your project's build, the `polaretto` Vite plugin steps in. It takes your original, often large, image files and uses the `sharp` library to:
